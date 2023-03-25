@@ -21,6 +21,6 @@ const hendlerInput = e => {
     console.log(e.target.value)
     const inputValue = e.target.value;
     
-    fetchCountries(inputValue).then(console.log);
+    fetchCountries(inputValue).then(data => console.log(data));
  } 
 input.addEventListener("input", debounce(hendlerInput ,300));
