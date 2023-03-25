@@ -29,10 +29,11 @@ const hendlerInput = e => {
           return;
         }
         else {
-            VisualInit(countries);
+          visualInit(countries);
         }
     }).catch(error => {
         Notiflix.Notify.failure(`Oops, there is no country with that name`);
+        clearAll ();
     })
 };
 
@@ -42,7 +43,7 @@ input.addEventListener("input", debounce(hendlerInput , DEBOUNCE_DELAY));
 
 
 
-const VisualInit = (countries) => {
+const visualInit = (countries) => {
 
 if (countries.length > 10 ) {
     Notiflix.Notify.warning('Too many matches found. Please enter a more specific name.')
@@ -55,7 +56,7 @@ else if (countries.length > 1) {
     <img src="${country.flags.svg}" alt="Flag of ${country.name}" width = 25px>
     <span><strong>${country.name}</strong></span>
     </li>
-  `).join('');
+    `).join('');
   ulCountryName.insertAdjacentHTML("beforeend", countryMarkup);
   divCountryInfo.innerHTML = '';
 }
